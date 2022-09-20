@@ -1,0 +1,17 @@
+/* fieldset */
+:host ::ng-deep .background,
+:host ::ng-deep .p-fieldset-legend {
+  background-color: black;
+}
+
+
+:host ::ng-deep .p-fieldset .p-fieldset-legend:hover {
+  background-color: #9061F9;
+}
+
+:host ::ng-deep .p-fieldset.p-fieldset-toggleable .p-fieldset-legend a .p-fieldset-toggler{
+  margin-right: 0;
+  color: #D1D5DB;
+}
+
+

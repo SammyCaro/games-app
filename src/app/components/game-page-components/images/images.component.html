@@ -1,0 +1,50 @@
+<div class="flex justify-start items-center">
+  <a
+    *ngIf="game.released != null; else noDate"
+    href="#"
+    class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-md relative mb-3 mr-3"
+  >
+    Release date: {{ game.released | date }}
+  </a>
+
+  <ng-template #noDate>
+    <a
+      href="#"
+      class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-md relative mb-3 mr-3"
+    >
+      no data about release date
+    </a>
+  </ng-template>
+
+  <a
+    href="#"
+    class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-md relative mb-3"
+  >
+    Last updated: {{ game.updated | date }}
+  </a>
+</div>
+
+<div class="grid overflow-hidden grid-cols-2 grid-rows-2 gap-2">
+  <div
+    *ngFor="let gameScreenshot of gameScreenshots | slice: 0:3; let i = index"
+  >
+    <img
+      src="{{ gameScreenshot.image }}"
+      alt="store logo"
+      class="w-[22rem]"
+      *ngIf="i == 0"
+    />
+    <img
+      src="{{ gameScreenshot.image }}"
+      alt="{store logo"
+      class="w-[22rem]"
+      *ngIf="i == 1"
+    />
+    <img
+      src="{{ gameScreenshot.image }}"
+      alt="store logo"
+      class="absolute w-[40%] ml-12 mr-12 max-h-60"
+      *ngIf="i == 2"
+    />
+  </div>
+</div>

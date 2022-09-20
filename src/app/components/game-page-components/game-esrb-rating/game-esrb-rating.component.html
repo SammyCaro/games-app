@@ -1,0 +1,91 @@
+<div
+  class="flex flex-row justify-around"
+  *ngIf="
+    game.esrb_rating != null &&
+      game.metacritic != null &&
+      game.esrb_rating != null;
+    else noSlug
+  "
+>
+  <img
+    *ngIf="game.esrb_rating.slug === 'mature'"
+    src="../../../../assets/esrb ratings/ESRB_2013_Mature.svg.png"
+    alt="esrb_rating"
+    class="h-[5rem] w-[5rem] m-0"
+  />
+  <img
+    *ngIf="game.esrb_rating.slug === 'everyone'"
+    src="../../../../assets/esrb ratings/ESRB_2013_Everyone.svg.png"
+    alt="esrb_rating"
+    class="h-[5rem] w-[5rem] m-0"
+  />
+  <img
+    *ngIf="game.esrb_rating.slug === 'everyone-10-plus'"
+    src="../../../../assets/esrb ratings/ESRB_2013_Everyone_10+.svg.png"
+    alt="esrb_rating"
+    class="h-[5rem] w-[5rem] m-0"
+  />
+  <img
+    *ngIf="game.esrb_rating.slug === 'teen'"
+    src="../../../../assets/esrb ratings/ESRB_2013_Teen.svg.png"
+    alt="esrb_rating"
+    class="h-[5rem] w-[5rem] m-0"
+  />
+  <img
+    *ngIf="game.esrb_rating.slug === 'adults-only'"
+    src="../../../../assets/esrb ratings/ESRB_2013_Adults_Only_18+.svg.png"
+    alt="esrb_rating"
+    class="h-[5rem] w-[5rem] m-0"
+  />
+
+  <div *ngFor="let rating of game.ratings | slice: 0:1">
+    <div
+      *ngIf="rating.percent >= 40"
+      class="w-[15rem] h-[5rem] bg-purple-500 rounded-md p-2"
+    >
+      <h2 class="text-gray-300 font-semibold text-left ratingTitle">
+        This game is:
+      </h2>
+      <p class="text-2xl text-gray-300 font-bold">
+        {{ rating.title | titlecase }}!
+      </p>
+    </div>
+  </div>
+
+  <div class="flex flex-col relative bottom-2">
+    <a
+      href="{{ game.metacritic_url }}"
+      target="_blank"
+      class="hover:text-purple-500 text-gray-200 font-semibold text-left font-bold"
+      ><p class="flex flex-col text-center text-6xl">
+        {{ game.metacritic }}
+        <span class="text-center text-xl"> Metacritic Score</span>
+      </p></a
+    >
+  </div>
+</div>
+
+<ng-template #noSlug>
+  <div class="flex flex-row justify-around">
+    <p class="text-gray-300 text-left w-[10rem]">
+      Theres no data about this game's esrb rating
+    </p>
+    <div *ngFor="let rating of game.ratings | slice: 0:1">
+      <div
+        *ngIf="rating.percent >= 40"
+        class="w-[15rem] h-[5rem] bg-purple-500 rounded-md p-2"
+      >
+        <h2 class="text-gray-300 font-semibold text-left ratingTitle">
+          This game is:
+        </h2>
+        <p class="text-2xl text-gray-300 font-bold">
+          {{ rating.title | titlecase }}!
+        </p>
+      </div>
+    </div>
+
+    <p class="text-gray-300 text-left w-[10rem]">
+      Theres no data about this game's metacritic score
+    </p>
+  </div>
+</ng-template>

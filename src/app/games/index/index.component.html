@@ -1,0 +1,106 @@
+<div class="grid overflow-hidden grid-cols-6 grid-rows-2 gap-2 p-5">
+  <!--  -->
+  <div
+    class="row-start-1 row-end-3 col-start-1 col-end-2 fixed top-0 pt-3 w-1/6 h-screen overflow-auto overscroll-contain"
+  >
+    <div class="mb-3">
+      <p class="text-gray-300 text-bold text-3xl text-left">Genres</p>
+
+      <div
+        class="flex flex-col items-start justify-start"
+        *ngFor="let genre of genres"
+      >
+        <a
+          (click)="activateGenre(genre.slug)"
+          class="flex justify-end cursor-pointer"
+        >
+          <img
+            src="{{ genre.icon }}"
+            alt="platform icon"
+            class="max-w-[2.7rem] max-h-[2.7rem] platform-icon"
+          />
+          <p class="text-[1.1rem] text-right platform-name">
+            {{ genre.name | titlecase }}
+          </p>
+        </a>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <p class="text-gray-300 text-bold text-3xl mb-6 text-left">Platforms</p>
+
+      <div
+        class="flex flex-col items-start justify-end"
+        *ngFor="let platform of platforms"
+      >
+        <a
+          (click)="activatePlatform(platform.slug)"
+          class="flex justify-end cursor-pointer"
+        >
+          <img
+            src="{{ platform.icon }}"
+            alt="platform icon"
+            class="max-w-[2.7rem] max-h-[2.7rem] platform-icon"
+          />
+          <p class="text-[1.1rem] text-right platform-name">
+            {{ platform.name }}
+          </p>
+        </a>
+      </div>
+    </div>
+
+    <div class="pb-5">
+      <p class="text-gray-300 text-bold text-3xl mb-6 text-left">Stores</p>
+
+      <div
+        class="flex flex-col items-start justify-end"
+        *ngFor="let store of stores"
+      >
+        <a
+          (click)="activateStore(store.slug)"
+          class="flex justify-end cursor-pointer"
+        >
+          <img
+            src="{{ store.icon }}"
+            alt="platform icon"
+            class="max-w-[2.7rem] max-h-[2.7rem] platform-icon"
+          />
+          <p class="text-[1.1rem] text-right platform-name">
+            {{ store.name }}
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row-start-1 row-end-3 col-start-2 col-end-7">
+    <app-input-text
+      (onEnter)="search($event)"
+      (onDebounce)="sugerencias($event)"
+    ></app-input-text>
+
+    <div *ngIf="games.length == 0; else searchedCard">
+      <app-card></app-card>
+    </div>
+
+    <ng-template #searchedCard>
+      <app-searched-card
+        [games]="games"
+        [totalGenreRecords]="totalGenreRecords"
+        [activateGenre]="activateGenre"
+      ></app-searched-card>
+    </ng-template>
+  </div>
+  <!--  -->
+</div>
+
+<!--   <ul *ngIf="mostrarSugerencias" class="absolute">
+    <li *ngFor="let games of juegosSugeridos" class="text-gray-300">
+      <a class="text-gray-300" [routerLink]="['./']">
+        {{ games.name }}
+      </a>
+    </li>
+    <li class="text-gray-300" (click)="sugerencias(termino)">
+      <a class="text-gray-300"> Buscar "{{ termino }}" </a>
+    </li>
+  </ul> -->

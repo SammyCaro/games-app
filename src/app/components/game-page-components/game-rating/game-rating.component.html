@@ -1,0 +1,116 @@
+<div class="">
+  <div class="pt-8 font-bold text-2xl text-gray-300 tracking-wide">
+    User's Ratings
+  </div>
+  <div class="flex mt-1 justify-center">
+    <div
+      class="flex items-center inline-block space-x-2 leading-none text-center whitespace-nowrap align-baseline text-sm text-gray-300"
+    >
+      <div class="items-center">
+        <ul class="flex justify-center">
+          <li>
+            <bar-rating
+              [(rate)]="game.rating"
+              [max]="5"
+              [readOnly]="true"
+              [theme]="'movie'"
+            >
+              <ng-template ratingActive>
+                <img
+                  src="../../../assets/icons/star-filled.png"
+                  alt=""
+                  class="w-[1rem] h-[1rem]"
+                />
+              </ng-template>
+            </bar-rating>
+          </li>
+        </ul>
+      </div>
+      <div class="items-center font-bold">{{ game.rating }}/5</div>
+    </div>
+  </div>
+  <div class="text-xs text-gray-300">{{ game.ratings_count }} ratings</div>
+  <div
+    class="flex items-center justify-center"
+    *ngFor="let rating of game.ratings"
+  >
+    <div class="w-10/12 flex">
+      <ul class="flex justify-center">
+        <li *ngIf="rating.title === 'exceptional'">
+          <div
+            class="flex justify-between mx-auto justify-center items-center space-x-3 p-2 text-center"
+          >
+            <div class="flex text-gray-300 text-xs pr-3.5">Exceptional</div>
+            <div class="w-[18rem] bg-gray-200 h-3 rounded-md relative left-1.5">
+              <div
+                class="bg-purple-500 h-3 rounded-md ml-0"
+                [style.width.%]="rating.percent"
+              ></div>
+            </div>
+            <div class="text-gray-300 text-xs relative left-[.5rem]">
+              {{ rating.percent | number: "1.1-1" }} %
+            </div>
+          </div>
+        </li>
+
+        <li *ngIf="rating.title === 'recommended'">
+          <div
+            class="flex mx-auto justify-center items-center space-x-3 p-2 text-center"
+          >
+            <div class="flex text-gray-300 text-xs">Recommended</div>
+            <div class="w-[18rem] bg-gray-200 h-3 rounded-md">
+              <div
+                class="bg-purple-500 h-3 rounded-md"
+                [style.width.%]="rating.percent"
+              ></div>
+            </div>
+            <div class="text-gray-300 text-xs">
+              {{ rating.percent | number: "1.1-1" }} %
+            </div>
+          </div>
+        </li>
+
+        <li *ngIf="rating.title === 'meh'">
+          <div
+            class="flex mx-auto justify-center items-center space-x-3 p-2 text-center"
+          >
+            <div class="flex text-gray-300 text-xs pr-14">Meh</div>
+            <div
+              class="w-[18rem] bg-gray-200 h-3 rounded-md relative left-[1rem]"
+            >
+              <div
+                class="bg-purple-500 h-3 rounded-md"
+                [style.width.%]="rating.percent"
+              ></div>
+            </div>
+            <div class="text-gray-300 text-xs relative left-[1rem]">
+              {{ rating.percent | number: "1.1-1" }} %
+            </div>
+          </div>
+        </li>
+
+        <li *ngIf="rating.title === 'skip'">
+          <div
+            class="flex mx-auto justify-center items-center space-x-3 p-2 text-center"
+          >
+            <div class="flex text-gray-300 text-xs pr-16">Skip</div>
+            <div
+              class="w-[18rem] bg-gray-200 h-3 rounded-md relative left-[.5rem]"
+            >
+              <div
+                class="bg-purple-500 h-3 rounded-md"
+                [style.width.%]="rating.percent"
+              ></div>
+            </div>
+            <div class="text-gray-300 text-xs relative left-[.5rem]">
+              {{ rating.percent | number: "1.1-1" }} %
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <p class="text-gray-300 relative left-[1rem] text-sm text-center">
+    Source: rawg.io
+  </p>
+</div>

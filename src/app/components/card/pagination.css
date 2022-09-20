@@ -1,0 +1,98 @@
+
+
+      .pagination ::ng-deep .ngx-pagination {
+        margin-left: 0 !important;
+        margin-bottom: 1rem !important;
+        line-height: 20px !important;
+        padding: 7px 15px 7px !important;
+        font-size: 12px !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination::before,
+      .pagination ::ng-deep .ngx-pagination::after {
+        content: ' ' !important;
+        display: table !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination::after {
+        clear: both !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination li {
+        -moz-user-select: none !important;
+        -webkit-user-select: none !important;
+        -ms-user-select: none !important;
+        margin-right: 0.2rem !important;
+        border-radius: 0 !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination li {
+        display: inline-block !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination a,
+      .pagination ::ng-deep .ngx-pagination button {
+        color: purple !important;
+        display: block !important;
+
+        border: 2px solid #8b8b8b !important;
+        padding: 0.5rem 1rem !important;
+        border-radius: 9% !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination a:hover,
+      .pagination ::ng-deep .ngx-pagination button:hover {
+        background: #788b8d88 !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination .current {
+        padding: 0.1875rem 0.625rem !important;
+        background: #2199e8 !important;
+        color: #fefefe !important;
+        cursor: default !important;
+        border: 2px solid #8b8b8b !important;
+        padding: 0.5rem 1rem !important;
+        border-radius: 9% !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination .disabled {
+        padding: 0.1875rem 0.625rem !important;
+        color: #cacaca00 !important;
+        cursor: default !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination .disabled:hover {
+        background: transparent !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination a,
+      .pagination ::ng-deep .ngx-pagination button {
+        cursor: pointer !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination .show-for-sr {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+      }
+
+      .pagination ::ng-deep .ngx-pagination .small-screen {
+        display: none !important;
+      }
+
+      @media screen and (max-width: 601px) {
+        .pagination ::ng-deep .ngx-pagination.responsive .small-screen {
+          display: inline-block !important;
+          color: black !important;
+          background-color: rgb(248, 248, 248) !important;
+          border: 2px solid #8b8b8b !important;
+          padding: 0.5rem 1rem !important;
+          border-radius: 9% !important;
+        }
+
+        .pagination ::ng-deep .ngx-pagination.responsive li:not(.small-screen):not(.pagination-previous):not(.pagination-next) {
+          display: none !important;
+        }
+      }

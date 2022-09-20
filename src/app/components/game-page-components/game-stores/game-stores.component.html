@@ -1,0 +1,83 @@
+<div class="flex justify-center items-end mt-5">
+  <div *ngFor="let store of game.stores" class="ml-5">
+    <a href="https://www.xbox.com" target="_blank">
+      <img
+        *ngIf="store.store.slug === 'xbox-store'"
+        src="../../../assets/icons/xbox.png"
+        alt="xbox logo"
+        class="w-[3rem] h-[3rem]"
+      />
+    </a>
+
+    <a href="https://store.steampowered.com" target="_blank">
+      <img
+        *ngIf="store.store.slug === 'steam'"
+        src="../../../assets/icons/steam.png"
+        alt="steam logo"
+        class="w-[3rem] h-[3rem]"
+      />
+    </a>
+
+    <a href="https://store.playstation.com" target="_blank">
+      <img
+        *ngIf="store.store.slug === 'playstation-store'"
+        src="../../../assets/icons/playstation.png"
+        alt="playstation logo"
+        class="w-[3rem] h-[3rem]"
+      />
+    </a>
+
+    <a href="https://store.epicgames.com" target="_blank">
+      <img
+        *ngIf="store.store.slug === 'epic-games'"
+        src="../../../assets/icons/epic-games-store.jpg"
+        alt="epic games logo"
+        class="w-[3rem] h-[3rem]"
+      />
+    </a>
+
+    <a href="https://www.apple.com/cl/app-store/" target="_blank">
+      <img
+        *ngIf="store.store.slug === 'app-store'"
+        src="../../../assets/icons/app-store.png"
+        alt="app store logo"
+        class="w-[3rem] h-[3rem]"
+      />
+    </a>
+
+    <a href="https://www.nintendo.com" target="_blank">
+      <img
+        *ngIf="store.store.slug === 'nintendo'"
+        src="../../../assets/icons/nintendo.png"
+        alt="nintendo logo"
+        class="w-[3rem] h-[3rem]"
+      />
+    </a>
+
+    <a href="https://play.google.com/" target="_blank">
+      <img
+        *ngIf="store.store.slug === 'google-play'"
+        src="../../../assets/icons/google-play.png"
+        alt="google play logo"
+        class="w-[3rem] h-[3rem]"
+      />
+    </a>
+
+    <a href="https://www.gog.com/" target="_blank">
+      <img
+        *ngIf="store.store.slug === 'gog'"
+        src="../../../assets/icons/gog-logo.png"
+        alt="gog logo"
+        class="w-[3rem] h-[3rem]"
+      />
+    </a>
+    <a href="https://www.xbox.com/es-CL/games/xbox-360" target="_blank">
+      <img
+        *ngIf="store.store.slug === 'xbox360'"
+        src="../../../assets/icons/xbox-360.svg"
+        alt="xbox 360 logo"
+        class="w-[4rem] h-[4rem] relative top-3 mr-0"
+      />
+    </a>
+  </div>
+</div>

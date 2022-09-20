@@ -1,0 +1,101 @@
+<div
+  class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 pl-0 pt-5 pr-5 pl-5"
+>
+  <section
+    class="p-0 w-full mb-3"
+    *ngFor="
+      let game of games
+        | paginate
+          : {
+              id: 'identificador',
+              itemsPerPage: 35,
+              currentPage: page,
+              totalItems: totalGenreRecords
+            }
+    "
+  >
+    <!-- Item 1 -->
+    <div class="flex flex-col gap-1">
+      <!-- Image -->
+      <a
+        href="#"
+        class="bg-purple-500 rounded-md"
+        [routerLink]="['/game', game.id]"
+      >
+        <img
+          src="{{ game.background_image }}"
+          class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 rounded-md min-h-[15rem]"
+        />
+      </a>
+
+      <!-- Games Title -->
+      <p class="text-purple-500 text-gray-200 font-semibold">
+        {{ game.name }}
+      </p>
+
+      <!-- Category Tags -->
+      <div class="flex justify-start items-center">
+        <div class="ml-1" *ngFor="let genre of game.genres | slice: 0:3">
+          <a
+            href="#"
+            class="hover:bg-gray-600 text-gray-300 text-[.6rem] font-semibold bg-gray-700 px-2 py-1 rounded-full"
+          >
+            {{ genre.name }}
+          </a>
+        </div>
+      </div>
+
+      <div class="w-20 h-0.5 bg-purple-500 m-2"></div>
+
+      <div class="flex flex-col" *ngIf="game.platforms != null">
+        <!-- Platforms -->
+        <div
+          class="ml-1 mb-2 flex flex-col items-start"
+          *ngFor="let platform of game.platforms.slice(0, 3)"
+        >
+          <a
+            class="text-gray-300 text-[.6rem] font-semibold bg-red-900 hover:bg-red-800 px-2 py-1 rounded-full"
+            href="#"
+          >
+            {{ platform.platform.name }}</a
+          >
+        </div>
+        <!-- Ratings -->
+        <div class="self-end absolute text-4xl mr-8 mt-2">
+          <bar-rating
+            [(rate)]="game.rating"
+            [max]="5"
+            [readOnly]="true"
+            [theme]="'movie'"
+          >
+            <ng-template ratingActive>
+              <img
+                src="../../../assets/icons/star-filled.png"
+                alt=""
+                class="w-[1rem] h-[1rem]"
+              />
+            </ng-template>
+          </bar-rating>
+
+          <p class="text-white text-3xl mb-0">
+            {{ game.rating | number: "1.1-1" }}/5
+          </p>
+
+          <p class="text-[.7rem] relative bottom-3">
+            {{ game.ratings_count }} ratings
+          </p>
+        </div>
+      </div>
+      <!--  -->
+    </div>
+  </section>
+</div>
+
+<pagination-controls
+  id="identificador"
+  (pageChange)="page = $event"
+  (click)="getAllData()"
+  class="pagination"
+>
+  ></pagination-controls
+>

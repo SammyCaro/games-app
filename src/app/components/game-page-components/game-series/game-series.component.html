@@ -1,0 +1,45 @@
+<h2 class="hero glitch layers justify-self-end" data-text="From the same serie">
+  <span>From the same serie</span>
+</h2>
+
+<div
+  class="grid gap-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 p-5"
+  *ngIf="gameSeries.length > 0; else noRelated"
+>
+  <section class="px-6 w-full mb-3" *ngFor="let gameSerie of gameSeries">
+    <!-- Item 1 -->
+    <div class="flex flex-col gap-1">
+      <!-- Image -->
+      <a
+        href="#"
+        class="bg-purple-500 rounded-md"
+        [routerLink]="['/game', gameSerie.id]"
+        (click)="onClick()"
+      >
+        <img
+          src="{{ gameSerie.background_image }}"
+          class="hover:translate-x-1 hover:-translate-y-1 delay-50 duration-100 rounded-md h-56 w-full"
+        />
+      </a>
+
+      <!-- Games Title -->
+      <p class="text-purple-500 text-gray-200 font-semibold">
+        {{ gameSerie.name }}
+      </p>
+
+      <!-- Category Tags -->
+      <div class="flex justify-start items-center">
+        <div class="ml-1" *ngFor="let genre of gameSerie.genres | slice: 0:3">
+          <a
+            href="#"
+            class="hover:bg-gray-600 text-gray-300 text-xs font-semibold bg-gray-700 px-2 py-1 rounded-full"
+          >
+            {{ genre.name }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<ng-template #noRelated> This game hasn't another serie game. </ng-template>

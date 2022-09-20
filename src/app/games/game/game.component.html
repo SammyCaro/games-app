@@ -1,0 +1,56 @@
+<main *ngIf="game">
+  <section class="pt-10 mb-6 pl-10 pr-10 h-5/6 grid grid-cols-2 gap-[4rem]">
+    <app-images [game]="game"> </app-images>
+
+    <div class="pt-8 mt-7 ml-[4rem]">
+      <h1 class="text-6xl text-gray-300 font-bold">
+        <a
+          href="{{ game.website }}"
+          target="_blank"
+          class="hover:text-purple-500 cursor-pointer text-[4rem] font-bold leading-10"
+          >{{ game.name }}</a
+        >
+      </h1>
+
+      <app-game-stores [game]="game"></app-game-stores>
+
+      <app-game-rating [game]="game"></app-game-rating>
+    </div>
+  </section>
+
+  <section class="pl-10 pr-10 grid grid-cols-2 gap-6">
+    <app-game-esrb-rating class="m-0" [game]="game"></app-game-esrb-rating>
+    <app-game-web-tags [game]="game"></app-game-web-tags>
+  </section>
+
+  <section>
+    <app-game-movie [game]="game"></app-game-movie>
+  </section>
+
+  <section>
+    <app-game-field-set [game]="game" class="mb-3"></app-game-field-set>
+  </section>
+
+  <section>
+    <app-game-requirements [game]="game"></app-game-requirements>
+  </section>
+
+  <section class="px-[35px]">
+    <app-game-achievements></app-game-achievements>
+  </section>
+
+  <section class="px-[35px]">
+    <app-game-series> </app-game-series>
+  </section>
+
+  <footer>
+    <div class="grid grid-cols-8 gap-2">
+      <p
+        *ngFor="let tag of game.tags"
+        class="hover:text-gray-600 hover:cursor-pointer text-gray-300 text-sm font-semibold p-0"
+      >
+        #{{ tag.name }}
+      </p>
+    </div>
+  </footer>
+</main>

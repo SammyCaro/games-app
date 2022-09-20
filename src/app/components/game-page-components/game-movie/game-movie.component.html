@@ -1,0 +1,22 @@
+<div *ngIf="gameMovie.length !== 0; else gameImage">
+  <div *ngFor="let movie of gameMovie | slice: 0:1">
+    <video
+      autoplay
+      loop
+      controls
+      oncanplay="this.muted=true"
+      class="w-10/12 max-h-[35rem] m-auto"
+    >
+      <source src="{{ movie.data.max }}" type="video/mp4" />
+      Tu navegador no soporta la etiqueta de video
+    </video>
+  </div>
+</div>
+
+<ng-template #gameImage class="mb-10">
+  <img
+    *ngFor="let gameImage of gameScreenshot | slice: 4:5"
+    class="w-10/12 max-h-[30rem] m-auto"
+    src="{{ gameImage.image }}"
+  />
+</ng-template>
